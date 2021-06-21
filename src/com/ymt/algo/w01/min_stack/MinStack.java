@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.min_stack;
+package com.ymt.algo.w01.min_stack;
 
 import java.util.Stack;
 

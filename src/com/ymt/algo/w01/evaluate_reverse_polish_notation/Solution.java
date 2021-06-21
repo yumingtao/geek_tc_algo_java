@@ -1,14 +1,12 @@
-package com.ymt.algo.lession01.evaluate_reverse_polish_notation;
+package com.ymt.algo.w01.evaluate_reverse_polish_notation;
 
 import java.util.Stack;
 
 /**
- * 注意在leet code中，使用equals判断 + - * /才能通过
- * 判断字符串相等，一般不用==，而是使用equals，String重写了equals方法
  * @author yumingtao
- * @date 6/20/21 11:42 PM
+ * @date 6/20/21 11:05 PM
  */
-public class Solution2 {
+public class Solution {
     public int evalRPN(String[] tokens) {
         //最近相关性，使用栈
         //判断当前字符，是数字则入栈，是运算符，则去除栈中的两个值，进行+—*/，结果再入栈
@@ -18,29 +16,34 @@ public class Solution2 {
         int b;
         int val = 0;
         for (String s : tokens) {
-            if (!s.equals("+") && !s.equals("-") && !s.equals("*") && !s.equals("/")) {
+            if (s != "+" && s != "-" && s != "*" && s != "/") {
                 stack.push(s);
             } else {
                 b = Integer.valueOf(stack.pop());
                 a = Integer.valueOf(stack.pop());
 
-                if (s.equals("+")) {
+                if (s == "+") {
                     val = a + b;
                 }
-                if (s.equals("-")) {
+                if (s == "-") {
                     val = a - b;
                 }
-                if (s.equals("*")) {
+                if (s == "*") {
                     val = a * b;
                 }
-                if (s.equals("/")) {
+                if (s == "/") {
                     val = a / b;
                 }
-
                 stack.push(String.valueOf(val));
             }
         }
 
         return Integer.valueOf(stack.pop());
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String[] tokens = new String[]{"2", "1", "+", "3", "*"};
+        System.out.println(solution.evalRPN(tokens));
     }
 }

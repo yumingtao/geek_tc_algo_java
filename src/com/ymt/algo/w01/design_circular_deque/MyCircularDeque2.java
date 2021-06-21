@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.design_circular_deque;
+package com.ymt.algo.w01.design_circular_deque;
 
 /**
  * Your MyCircularDeque object will be instantiated and called as such:

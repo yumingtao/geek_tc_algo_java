@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.plus_one;
+package com.ymt.algo.w01.plus_one;
 
 /**
  * Description

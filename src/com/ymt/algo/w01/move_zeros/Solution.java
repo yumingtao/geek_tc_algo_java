@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.move_zeros;
+package com.ymt.algo.w01.move_zeros;
 
 /**
  * 同样的思想

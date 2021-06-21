@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.remove_duplicates_from_sorted_array;
+package com.ymt.algo.w01.remove_duplicates_from_sorted_array;
 
 /**
  * Description

@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.reverse_linked_list;
+package com.ymt.algo.w01.reverse_linked_list;
 
 /**
  * Definition for singly-linked list.

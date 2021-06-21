@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.valid_parentheses;
+package com.ymt.algo.w01.valid_parentheses;
 
 import java.util.Stack;
 

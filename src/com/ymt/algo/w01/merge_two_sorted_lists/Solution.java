@@ -1,4 +1,4 @@
-package com.ymt.algo.lession01.merge_two_sorted_lists;
+package com.ymt.algo.w01.merge_two_sorted_lists;
 
 /**
  * @author yumingtao
