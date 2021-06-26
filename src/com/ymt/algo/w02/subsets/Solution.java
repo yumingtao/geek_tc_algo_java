@@ -29,7 +29,7 @@ public class Solution {
         //0.递归终止条件
         if (index == nums.length) {
             //将本次递归结果保存
-            //注意没次要保存sub的copy，否则对象的值会被更改
+            //注意每次要保存sub的copy，否则对象的值会被更改
             result.add(new ArrayList<>(sub));
             return;
         }
@@ -39,7 +39,7 @@ public class Solution {
         //1.2进入到下一级
         findSubset(nums, index + 1);
 
-        //2.注意清理现
+        //2.注意清理现场
         sub.remove(sub.size() - 1);
 
         //3.如果不存在
