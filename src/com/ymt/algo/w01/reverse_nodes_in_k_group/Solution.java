@@ -77,7 +77,7 @@ public class Solution {
             head = head.next;
         }
 
-        //循环结束，没有打到k==0，说明剩余节点不够，返回null
+        //循环结束，没有达到k==0，说明剩余节点不够，返回null
         return null;
     }
 
@@ -106,6 +106,7 @@ public class Solution {
             head = next;
         }
 
+        //主要解决只有两个元素，导致链表没有反转
         tail.next = last;
     }
 }
