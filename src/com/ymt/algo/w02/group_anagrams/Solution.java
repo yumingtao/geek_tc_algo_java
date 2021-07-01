@@ -19,13 +19,19 @@ public class Solution {
 
         for (String s : strs) {
             orderedStr = sortString(s);
-            if(resultMap.containsKey(orderedStr)){
+
+            /*if(resultMap.containsKey(orderedStr)){
                 resultMap.get(orderedStr).add(s);
             }else{
                 groups = new ArrayList<>();
                 groups.add(s);
                 resultMap.put(orderedStr, groups);
-            }
+            }*/
+
+            //map中有getOrDefault写法
+            groups = resultMap.getOrDefault(orderedStr, new ArrayList<>());
+            groups.add(s);
+            resultMap.put(orderedStr, groups);
         }
 
         for(List<String> group: resultMap.values()){
