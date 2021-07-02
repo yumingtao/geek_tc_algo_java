@@ -11,7 +11,7 @@ import java.util.*;
  * @author yumingtao
  * @date 7/2/21 9:41 AM
  */
-public class Solution_Iteration {
+public class IterationSolution {
     List<Integer> nodes = new ArrayList<>();
     Stack<Node> stack = new Stack<>();
 
