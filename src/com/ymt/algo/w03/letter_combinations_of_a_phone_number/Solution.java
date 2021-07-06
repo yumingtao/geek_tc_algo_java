@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 /**
  * 思路：
- * 1.参照两个数组全排列的思路，使用递归来实现
- * 2.关键在于判断下个位置可以放什么数据
+ * 1.参照数组全排列的思路，使用递归来实现
+ * 2.判断下个位置可以放什么数据
  *
  * @author yumingta
  * @date 7/5/21 1:53 PM
@@ -35,7 +35,7 @@ public class Solution {
             allLetterUsed.add(new HashMap<>());
         }
 
-        dfs(0);
+        find(0);
 
         //组装返回结果
         result.stream().forEach(r -> {
@@ -45,7 +45,7 @@ public class Solution {
         return ans;
     }
 
-    private void dfs(int index) {
+    private void find(int index) {
         //终止条件
         if (index == digitChars.length) {
             result.add(new ArrayList<>(set));
@@ -66,7 +66,7 @@ public class Solution {
             //如果字符没有用过，放入到字符传中
             set.add(String.valueOf(letter));
             allLetterUsed.get(index).put(letter, true);
-            dfs(index + 1);
+            find(index + 1);
             allLetterUsed.get(index).put(letter, false);
             set.remove(set.size() - 1);
         }
