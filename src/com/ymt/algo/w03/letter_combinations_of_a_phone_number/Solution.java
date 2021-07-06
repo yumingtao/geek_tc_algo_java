@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
  * 1.参照数组全排列的思路，使用递归来实现
  * 2.判断下个位置可以放什么数据
  *
+ * 备注：考虑复杂了，参照子集的问题，使用图的dfs可以实现
  * @author yumingta
  * @date 7/5/21 1:53 PM
  */
