@@ -37,9 +37,8 @@ public class DfsSolution {
                 //如果点是1，并且没有被访问过，开始DFS
                 if (grid[i][j] == '1' && !visited[i][j]) {
                     dfs(i, j, grid);
+                    islandCount++;
                 }
-
-                islandCount++;
             }
         }
 
