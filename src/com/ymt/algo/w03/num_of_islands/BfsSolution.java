@@ -21,9 +21,9 @@ import java.util.Queue;
  * @date 7/6/21 21:51 PM
  */
 public class BfsSolution {
-    public static final int[] dx = {-1, 0, 0, 1};
-    public static final int[] dy = {0, 1, -1, 0};
-    private static int DIRECTIONS = 4;
+    private final int[] dx = {-1, 0, 0, 1};
+    private final int[] dy = {0, 1, -1, 0};
+    private final int DIRECTIONS = 4;
     private boolean[][] visited;
     private int rows;
     private int cols;

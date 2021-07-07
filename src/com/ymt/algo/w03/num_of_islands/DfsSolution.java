@@ -15,9 +15,9 @@ package com.ymt.algo.w03.num_of_islands;
  * @date 7/6/21 10:26 AM
  */
 public class DfsSolution {
-    public static final int[] dx = {-1, 0, 0, 1};
-    public static final int[] dy = {0, 1, -1, 0};
-    private static int DIRECTIONS = 4;
+    public final int[] dx = {-1, 0, 0, 1};
+    public final int[] dy = {0, 1, -1, 0};
+    private final int DIRECTIONS = 4;
     private boolean[][] visited;
     private int rows;
     private int cols;
