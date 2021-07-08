@@ -5,7 +5,6 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Queue;
 
 /**
@@ -68,7 +67,7 @@ public class BfsSolution {
                         allPairs.add(new ArrayList<>(pairs));
                     }*/
 
-                    pairs.clear();
+                    //pairs.clear();
                 }
             }
         }
