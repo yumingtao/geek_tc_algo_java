@@ -71,6 +71,7 @@ public class DfsSolution {
         //处理逻辑
         //模板，先标记为已访问
         visited[i][j] = true;
+        //将未访问过的，连通的'O'添加到链表
         pairs.add(new Pair<>(i, j));
         //模板，判断4个方向的出边
         for (int k = 0; k < DIRECTIONS; k++) {
