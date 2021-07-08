@@ -5,6 +5,7 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Queue;
 
 /**
@@ -23,7 +24,6 @@ public class BfsSolution {
     private final int[] dy = {0, 1, -1, 0};
     private final int DIRECTIONS = 4;
     private boolean[][] visited;
-    private List<Pair<Integer, Integer>> pairs = new ArrayList<>();
     private List<List<Pair<Integer, Integer>>> allPairs = new ArrayList<>();
     int rows;
     int cols;
@@ -35,11 +35,12 @@ public class BfsSolution {
 
         visited = new boolean[rows][cols];
 
+        List<Pair<Integer, Integer>> pairs;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 //如果点不在边界，且为'O'
                 if (board[i][j] == 'O' && i > 0 && j > 0 && i < rows - 1 && j < cols - 1 && !visited[i][j]) {
-                    bfs(i, j, board);
+                    pairs = bfs(i, j, board);
                     boolean isExpected = true;
                     for (Pair p : pairs) {
                         int px = (int) p.getKey();
@@ -54,6 +55,19 @@ public class BfsSolution {
                         allPairs.add(new ArrayList<>(pairs));
                     }
 
+                    /**
+                     * 备注：Leetcode不支持Optional
+                     */
+                    /*Optional optional = pairs.stream().filter(p->{
+                        int px = p.getKey();
+                        int py = p.getValue();
+                        return px == 0 || py == 0 || px == rows - 1 || py == cols - 1;
+                    }).findAny();
+
+                    if (!optional.isPresent()) {
+                        allPairs.add(new ArrayList<>(pairs));
+                    }*/
+
                     pairs.clear();
                 }
             }
@@ -64,11 +78,10 @@ public class BfsSolution {
                 board[p.getKey()][p.getValue()] = 'X';
             });
         });
-
-        System.out.println();
     }
 
-    private void bfs(int i, int j, char[][] board) {
+    private List<Pair<Integer, Integer>> bfs(int i, int j, char[][] board) {
+        List<Pair<Integer, Integer>> pairs = new ArrayList<>();
         //模板，先加入队列，再标记为已访问
         Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
         Pair connectedOPair = new Pair(i, j);
@@ -83,8 +96,8 @@ public class BfsSolution {
             pair = queue.poll();
             //模板，判断4个方向的出边
             for (int k = 0; k < DIRECTIONS; k++) {
-                int ni = (int)pair.getKey() + dx[k];
-                int nj = (int)pair.getValue() + dy[k];
+                int ni = (int) pair.getKey() + dx[k];
+                int nj = (int) pair.getValue() + dy[k];
 
                 //判断如果越界，直接忽略
                 if (ni < 0 || nj < 0 || ni >= rows || nj >= cols) {
@@ -101,6 +114,8 @@ public class BfsSolution {
                 }
             }
         }
+
+        return pairs;
     }
 
     public static void main(String[] args) {
