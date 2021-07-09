@@ -32,11 +32,11 @@ public class Solution {
         //循环找到的结果，进行两个斜线方向上的判断
         for (List<Integer> p : permutation) {
             if (isValid(p)) {
-                ans.add(putQueue(p));
+                List<String> result = putQueue(p);
+                ans.add(result);
             }
         }
 
-        //System.out.println(ans);
         return ans;
     }
 
@@ -51,7 +51,6 @@ public class Solution {
         }
 
         List<String> result = new ArrayList<>();
-        StringBuilder sb;
         for (int i = 0; i < n; i++) {
            result.add(String.join("", chessBoard[i]));
         }
