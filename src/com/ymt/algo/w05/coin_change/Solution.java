@@ -49,17 +49,14 @@ public class Solution {
             }
         }
 
-        //判断之后可以找开
-        if (min == Integer.MAX_VALUE) {
-            min = -1;
-        }
+        //判断最后是否可以找开
         visited[amount] = min == Integer.MAX_VALUE ? -1 : min;
         return visited[amount];
     }
 
     public static void main(String[] args) {
-        int[] coins = new int[]{2};
+        int[] coins = new int[]{1};
         Solution solution = new Solution();
-        System.out.println(solution.coinChange(coins, 3));
+        System.out.println(solution.coinChange(coins, 0));
     }
 }
