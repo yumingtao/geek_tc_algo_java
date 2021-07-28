@@ -23,7 +23,7 @@ public class Solution2 {
             List<Integer> cur = triangle.get(i);
             //遍历这一层中所有的元素
             for (int j = 0; j < cur.size(); j++) {
-                dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1]) + cur.get(i);
+                dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1]) + cur.get(j);
             }
         }
 
