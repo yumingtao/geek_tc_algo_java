@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Solution1 {
     public int minimumTotal(List<List<Integer>> triangle) {
-        //从最糊一层开始向上遍历
+        //从最后一层开始向上遍历
         for (int i = triangle.size() - 1; i >= 1; i--) {
             //当前层所有值列表
             List<Integer> cur = triangle.get(i);
