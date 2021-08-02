@@ -44,7 +44,7 @@ public class Solution {
             return x;
         }
 
-        //fa[x] = find(fa[x]);
+        fa[x] = find(fa[x]);
         return find(fa[x]);
     }
 
