@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class Solution {
     public int maxProfit(int[] prices) {
         int n = prices.length;
-        //建议次数
+        //交易次数
         int transactionCount = 2;
 
         //调整价格下标从1开始
