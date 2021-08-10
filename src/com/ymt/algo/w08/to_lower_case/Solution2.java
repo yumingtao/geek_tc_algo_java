@@ -9,7 +9,8 @@ public class Solution2 {
         char[] chs = s.toCharArray();
         for (int i = 0; i < chs.length; i++) {
             if (chs[i] >= 'A' && chs[i] <= 'Z') {
-                chs[i] = (char) (chs[i] - 'A' + 97);
+                //chs[i] = (char) (chs[i] - 'A' + 97);
+                chs[i] = (char) (chs[i] + 32);
             }
         }
 
