@@ -1,6 +1,9 @@
 package com.ymt.algo.w09.sudoku_solver;
 
 /**
+ * 思路：
+ * 1. 每次找到board中剩余的第一个位置开始
+ *
  * @author yumingtao
  * @date 2021/8/14 19:54
  */
