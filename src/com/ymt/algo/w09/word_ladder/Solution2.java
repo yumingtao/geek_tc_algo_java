@@ -36,15 +36,24 @@ public class Solution2 {
 
         //两个方向的BFS各走一步（各取出队头元素处理）
         while (!queueBegin.isEmpty() || !queueEnd.isEmpty()) {
+            //System.out.println("1111");
             int resultBegin = checkWithBfs(queueBegin, distBegin, distEnd);
             if (resultBegin != -1) {
                 return resultBegin;
             }
+            /*for (int i = 0; i < queueEnd.size(); i++) {
+                System.out.println("queueBegin：" + queueBegin.peek());
+            }*/
 
+            //System.out.println("2222");
             int resultEnd = checkWithBfs(queueEnd, distEnd, distBegin);
             if (resultEnd != -1) {
                 return resultEnd;
             }
+
+            /*for (int i = 0; i < queueEnd.size(); i++) {
+                System.out.println("queueEnd：" + queueEnd.peek());
+            }*/
         }
 
         return 0;
@@ -53,43 +62,46 @@ public class Solution2 {
     private int checkWithBfs(Queue<String> queue, Map<String, Integer> dist, Map<String, Integer> distOther) {
         //注意这里要用if，不能用while
         if (!queue.isEmpty()) {
-            String word = queue.poll();
-            char[] words = word.toCharArray();
+            //循环处理完每一层中的数据
+            for (int j = 0; j < queue.size(); j++) {
+                String word = queue.poll();
+                //System.out.println("word:" + word);
+                char[] words = word.toCharArray();
 
-            //遍历每个位置的字符
-            for (int i = 0; i < words.length; i++) {
-                //遍历所有的出边，26个英文字母
-                for (char ch = 'a'; ch <= 'z'; ch++) {
-                    //过滤掉自己
-                    if (ch == words[i]) {
-                        continue;
-                    }
+                //遍历每个位置的字符
+                for (int i = 0; i < words.length; i++) {
+                    //遍历所有的出边，26个英文字母
+                    for (char ch = 'a'; ch <= 'z'; ch++) {
+                        //过滤掉自己
+                        if (ch == words[i]) {
+                            continue;
+                        }
 
-                    //替换掉当前字符
-                    words[i] = ch;
-                    String newWord = new String(words);
+                        //替换掉当前字符
+                        words[i] = ch;
+                        String newWord = new String(words);
 
-                    //判断单词是否在列表里
-                    if (dist.containsKey(newWord) && !newWord.equals(word)) {
-                        int wordDist = dist.get(word);
-                        if (dist.get(newWord) > wordDist + 1) {
-                            dist.put(newWord, wordDist + 1);
-                            queue.add(newWord);
+                        //判断单词是否在列表里
+                        if (dist.containsKey(newWord) && !newWord.equals(word)) {
+                            int wordDist = dist.get(word);
+                            if (dist.get(newWord) > wordDist + 1) {
+                                dist.put(newWord, wordDist + 1);
+                                queue.add(newWord);
+                                //System.out.println("newWord:" + newWord);
 
-                            //另一个方向的bfs也处理了newWord，说明两者相遇了
-                            if (distOther.get(newWord) != (int) 1e9) {
-                                //注意此处dist已经更新过newWord，所以要-1，或直接使用wordDist
-                                return dist.get(newWord) + distOther.get(newWord) - 1;
+                                //另一个方向的bfs也处理了newWord，说明两者相遇了
+                                if (distOther.get(newWord) != (int) 1e9) {
+                                    //注意此处dist已经更新过newWord，所以要-1，或直接使用wordDist
+                                    return dist.get(newWord) + distOther.get(newWord) - 1;
+                                }
                             }
                         }
+                        //还原
+                        words[i] = word.charAt(i);
                     }
-
-                    //还原
-                    words[i] = word.charAt(i);
                 }
             }
         }
-
         //还没有相遇
         return -1;
     }
@@ -98,13 +110,13 @@ public class Solution2 {
     //"cog"
     //["hot","dot","tog","cog"]
     public static void main(String[] args) {
-        String[] strs = {"ymann", "yycrj", "oecij", "ymcnj", "yzcrj", "yycij", "xecij", "yecij", "ymanj", "yzcnj", "ymain"};
+        //String[] strs = {"ymann", "yycrj", "oecij", "ymcnj", "yzcrj", "yycij", "xecij", "yecij", "ymanj", "yzcnj", "ymain"};
         //String[] strs = {"hot", "dot", "dog", "lot", "log", "cog"};
-        //String[] strs = {"hot", "dot", "tog", "cog"};
+        String[] strs = {"hot", "dot", "tog", "cog"};
         List<String> list = Arrays.stream(strs).collect(Collectors.toList());
         Solution2 solution2 = new Solution2();
-        int result = solution2.ladderLength("ymain", "oecij", list);
-        //int result = solution2.ladderLength("hit", "cog", list);
+        //int result = solution2.ladderLength("ymain", "oecij", list);
+        int result = solution2.ladderLength("hit", "cog", list);
         System.out.println(result);
     }
 }
