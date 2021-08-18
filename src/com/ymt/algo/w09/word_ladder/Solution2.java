@@ -35,17 +35,17 @@ public class Solution2 {
         queueEnd.add(endWord);
 
         //两个方向的BFS各走一步（各取出队头元素处理）
-        while (!queueBegin.isEmpty() || !queueEnd.isEmpty()) {
-            int resultBegin = checkWithBfs(queueBegin, distBegin, distEnd);
-            if (resultBegin != -1) {
-                return resultBegin;
-            }
-
-            int resultEnd = checkWithBfs(queueEnd, distEnd, distBegin);
-            if (resultEnd != -1) {
-                return resultEnd;
-            }
+        //while (!queueBegin.isEmpty() || !queueEnd.isEmpty()) {
+        int resultBegin = checkWithBfs(queueBegin, distBegin, distEnd);
+        if (resultBegin != -1) {
+            return resultBegin;
         }
+
+        int resultEnd = checkWithBfs(queueEnd, distEnd, distBegin);
+        if (resultEnd != -1) {
+            return resultEnd;
+        }
+        //}
 
         return 0;
     }
@@ -69,8 +69,7 @@ public class Solution2 {
                     String newWord = new String(words);
 
                     //判断单词是否在列表里
-                    if (dist.containsKey(newWord)) {
-                        System.out.println(word);
+                    if (dist.containsKey(newWord) && !newWord.equals(word)) {
                         int wordDist = dist.get(word);
                         if (dist.get(newWord) > wordDist + 1) {
                             dist.put(newWord, wordDist + 1);
@@ -98,13 +97,13 @@ public class Solution2 {
     //"cog"
     //["hot","dot","tog","cog"]
     public static void main(String[] args) {
-        //String[] strs = {"ymann", "yycrj", "oecij", "ymcnj", "yzcrj", "yycij", "xecij", "yecij", "ymanj", "yzcnj", "ymain"};
+        String[] strs = {"ymann", "yycrj", "oecij", "ymcnj", "yzcrj", "yycij", "xecij", "yecij", "ymanj", "yzcnj", "ymain"};
         //String[] strs = {"hot", "dot", "dog", "lot", "log", "cog"};
-        String[] strs = {"hot", "dot", "tog", "cog"};
+        //String[] strs = {"hot", "dot", "tog", "cog"};
         List<String> list = Arrays.stream(strs).collect(Collectors.toList());
         Solution2 solution2 = new Solution2();
-        //int result = solution2.ladderLength("ymain", "oecij", list);
-        int result = solution2.ladderLength("hit", "cog", list);
+        int result = solution2.ladderLength("ymain", "oecij", list);
+        //int result = solution2.ladderLength("hit", "cog", list);
         System.out.println(result);
     }
 }
