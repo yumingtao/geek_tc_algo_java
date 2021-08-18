@@ -8,7 +8,8 @@ import java.util.Queue;
 /**
  * 思路:
  * 1.双向BFS
- * 2.注意双向bfs时，不能使用是否已访问标记数组
+ * 2.注意双向bfs时
+ * 3.使用是否已访问标记数组，防止重复访问
  *
  * @author yumingtao
  * @date 2021/8/18 13:17
