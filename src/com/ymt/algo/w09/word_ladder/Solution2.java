@@ -35,23 +35,24 @@ public class Solution2 {
         queueEnd.add(endWord);
 
         //两个方向的BFS各走一步（各取出队头元素处理）
-        //while (!queueBegin.isEmpty() || !queueEnd.isEmpty()) {
-        int resultBegin = checkWithBfs(queueBegin, distBegin, distEnd);
-        if (resultBegin != -1) {
-            return resultBegin;
-        }
+        while (!queueBegin.isEmpty() || !queueEnd.isEmpty()) {
+            int resultBegin = checkWithBfs(queueBegin, distBegin, distEnd);
+            if (resultBegin != -1) {
+                return resultBegin;
+            }
 
-        int resultEnd = checkWithBfs(queueEnd, distEnd, distBegin);
-        if (resultEnd != -1) {
-            return resultEnd;
+            int resultEnd = checkWithBfs(queueEnd, distEnd, distBegin);
+            if (resultEnd != -1) {
+                return resultEnd;
+            }
         }
-        //}
 
         return 0;
     }
 
     private int checkWithBfs(Queue<String> queue, Map<String, Integer> dist, Map<String, Integer> distOther) {
-        while (!queue.isEmpty()) {
+        //注意这里要用if，不能用while
+        if (!queue.isEmpty()) {
             String word = queue.poll();
             char[] words = word.toCharArray();
 
