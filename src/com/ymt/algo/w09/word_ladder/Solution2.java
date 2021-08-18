@@ -63,7 +63,8 @@ public class Solution2 {
         //注意这里要用if，不能用while
         if (!queue.isEmpty()) {
             //循环处理完每一层中的数据
-            for (int j = 0; j < queue.size(); j++) {
+            int size = queue.size();
+            for (int j = 0; j < size; j++) {
                 String word = queue.poll();
                 //System.out.println("word:" + word);
                 char[] words = word.toCharArray();
