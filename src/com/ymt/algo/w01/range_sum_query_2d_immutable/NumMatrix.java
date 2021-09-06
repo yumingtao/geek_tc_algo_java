@@ -5,7 +5,7 @@ package com.ymt.algo.w01.range_sum_query_2d_immutable;
  * @date 2021/9/6 20:46
  */
 public class NumMatrix {
-    //定义前缀和数组
+    //定义二维前缀和数组
     int[][] sum;
 
     public NumMatrix(int[][] matrix) {
